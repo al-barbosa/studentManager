@@ -15,18 +15,13 @@ const AdminLogin: React.FC = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
-
-  const eraseCookies = (): void => {
-    document.cookie = JSON.stringify({
-      email: '',
-      id: '',
-    });
-  };
-
-
   useEffect(() => {
-    eraseCookies();
+    eraseLocalStorage();
   }, []);
+
+  const eraseLocalStorage = (): void => {
+    localStorage.removeItem('user');
+  };
 
   const adminAPI = new AdminAPI();
   const navigate = useNavigate();
@@ -41,15 +36,16 @@ const AdminLogin: React.FC = () => {
 
   const handleAdminLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    eraseLocalStorage();
     const loggedAdmin = await adminAPI.login(loginForm.email, loginForm.password);
     if (loggedAdmin.message) {
-      eraseCookies();
+      eraseLocalStorage();
       setErrorMessage(loggedAdmin.message);
     }
     if (loggedAdmin.id) {
       setErrorMessage('');
-      document.cookie = JSON.stringify(loggedAdmin);
-      navigate(`/admin/${loggedAdmin.id}`);
+      localStorage.setItem('user', JSON.stringify(loggedAdmin));
+      navigate(`/admin`);
     }
   };
 

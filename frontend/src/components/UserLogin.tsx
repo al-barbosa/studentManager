@@ -15,15 +15,8 @@ const UserLogin: React.FC = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  const eraseCookies = (): void => {
-    document.cookie = JSON.stringify({
-      email: '',
-      id: '',
-    });
-  };
-
   useEffect(() => {
-    eraseCookies();
+    eraseLocalStorage();
   }, []);
 
   const navigate = useNavigate();
@@ -38,16 +31,20 @@ const UserLogin: React.FC = () => {
     }));
   };
 
+  const eraseLocalStorage = (): void => {
+    localStorage.removeItem('user');
+  };
+
   const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const loggedUser = await userAPI.login(loginForm.email, loginForm.password);
     if (loggedUser.message) {
-      eraseCookies();
+      eraseLocalStorage();
       setErrorMessage(loggedUser.message);
     }
     if (loggedUser.id) {
       setErrorMessage('');
-      document.cookie = JSON.stringify(loggedUser);
+      localStorage.setItem('user', JSON.stringify(loggedUser));
       navigate(`/user/${loggedUser.id}`);
     }
   };

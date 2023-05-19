@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AdminAPI from '../utils/adminAPI';
-import Dashboard from '../components/Dashboard';
+import DashboardClasses from '../components/DashboardClasses';
 import RegUser from '../components/RegUser';
 
 const AdminPage: React.FC = () => {
   const [adminInfo, setAdminInfo] = useState({ id: '', name: '', email: '' });
   const [selectedBtn, setSelectedBtn] = useState('Dashboard')
   const navigate = useNavigate();
-  const { adminId } = useParams();
-  const { id: cookiesId } = JSON.parse(document.cookie);
 
   useEffect(() => {
-    const cookies = JSON.parse(document.cookie);
-    const cookieId = cookies.id;
-
-    if (!cookieId) {
-      navigate('/');
-    }
+    const localStorageUser = JSON.parse(localStorage.getItem('user') || '{}');
+    const localStorageId = localStorageUser.id;
 
     const adminAPI = new AdminAPI();
 
     const getInfo = async (id: string) => {
       const adminInfo = await adminAPI.getById(id);
+      if (!adminInfo.id) {
+        navigate('/');
+      }
       setAdminInfo(adminInfo);
     };
 
-    getInfo(cookieId);
-  }, [navigate]);
+    getInfo(localStorageId);
+  }, [navigate, adminInfo.id]);
 
   const handleUser = () => {
-    // Lógica para navegar para a página de cadastro de usuário
     setSelectedBtn('User');
   };
 
   const handleDashboard = () => {
-    // Lógica para navegar para a página do dashboard
     setSelectedBtn('Dashboard');
   };
 
@@ -45,7 +40,7 @@ const AdminPage: React.FC = () => {
       <button onClick={handleDashboard}>Dashboard</button>
       <button onClick={handleUser}>Cadastrar usuário</button>
       { selectedBtn === 'Dashboard' ? 
-      <Dashboard /> : <RegUser /> }
+      <DashboardClasses /> : <RegUser /> }
     </div>
   );
 };

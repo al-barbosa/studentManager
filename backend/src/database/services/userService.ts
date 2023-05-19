@@ -5,6 +5,13 @@ import ErrorHandler from '../utils/errorHandler';
 export default class UserService {
   public getAll = async (): Promise<Users[]> => {
     const allUsers = await Users.findAll({
+      include: {
+        model: Categories,
+        as: 'category',
+        through: {
+          attributes: [], // Excluir atributos adicionais da tabela associativa
+        },
+      },
       attributes: {exclude: ['password']}
     });
     return allUsers;
