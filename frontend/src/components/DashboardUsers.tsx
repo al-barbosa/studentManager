@@ -3,15 +3,15 @@ import UserAPI from '../utils/userAPI';
 import '../styles/DashboardClasses.css'
 import IUser from '../interfaces/userInterface';
 
-const DashboardClasses: React.FC = () => {
-  const [categories, setCategories] = useState<IUser[]|null>(null)
+const DashboardUsers: React.FC = () => {
+  const [users, setUsers] = useState<IUser[]|null>(null)
 
   useEffect(() => {
     const userAPI = new UserAPI();
 
     const getCat = async () => {
       const allUsers = await userAPI.getAll();
-      setCategories(allUsers);
+      setUsers(allUsers);
     };
 
     getCat();
@@ -19,16 +19,22 @@ const DashboardClasses: React.FC = () => {
 
   return (
     <div>
-      <h3>Número de alunos por curso</h3>
-      <div className="chart">
-        {categories && categories.map((category) => (
+      <h3>Informação sobre alunos</h3>
+      <div className="userTable">
+        {users && users.map((user) => (
           <div
-            key={category.id}
-            className="bar"
-            style={{ height: `${category.users.length * 100}px` }}
+            key={user.id}
+            className="userInfo"
           >
-            <span className="label1">{category.name}</span>
-            <span className="label2">{category.users.length}</span>
+            <h5>{user.name}</h5>
+            {user.category && user.category.map((category, index) => (
+              <div
+              key={index}
+              className="userInfo"
+              >
+                <span>{category.name}</span>
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -36,4 +42,4 @@ const DashboardClasses: React.FC = () => {
   );
 };
 
-export default DashboardClasses;
+export default DashboardUsers;

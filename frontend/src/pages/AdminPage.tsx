@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AdminAPI from '../utils/adminAPI';
 import DashboardClasses from '../components/DashboardClasses';
 import RegUser from '../components/RegUser';
+import DashboardUsers from '../components/DashboardUsers';
 
 const AdminPage: React.FC = () => {
   const [adminInfo, setAdminInfo] = useState({ id: '', name: '', email: '' });
@@ -40,7 +41,9 @@ const AdminPage: React.FC = () => {
       <button onClick={handleDashboard}>Dashboard</button>
       <button onClick={handleUser}>Cadastrar usuário</button>
       { selectedBtn === 'Dashboard' ? 
-      <DashboardClasses /> : <RegUser /> }
+      <div>
+        <DashboardClasses /> <DashboardUsers /> 
+      </div> : <RegUser /> }
     </div>
   );
 };
