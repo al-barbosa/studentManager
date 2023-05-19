@@ -2,7 +2,6 @@ class AdminAPI {
   public getAll = async () => {
     const URL = '/admins';
     const response = await fetch(URL);
-    console.log(response)
     const data = await response.json();
     return data;
   }
@@ -20,6 +19,13 @@ class AdminAPI {
         password,
       })
     });
+    const data = await response.json();
+    return data;
+  }
+
+  public getById = async (id: string) => {
+    const URL = `/admins/${id}`;
+    const response = await fetch(URL);
     const data = await response.json();
     return data;
   }

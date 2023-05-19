@@ -24,6 +24,24 @@ class UserAPI {
     return data;
   }
 
+  public async createNewUser(email: string, name: string, password: string) {
+    const URL = '/users';
+    const response = await fetch(URL, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        name,
+        password,
+      })
+    });
+    const data = await response.json();
+    return data;
+  }
+
   // Outros métodos relacionados ao usuário, como recuperar informações do usuário, criar usuário, etc.
 }
 

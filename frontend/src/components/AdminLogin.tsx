@@ -49,7 +49,7 @@ const AdminLogin: React.FC = () => {
     if (loggedAdmin.id) {
       setErrorMessage('');
       document.cookie = JSON.stringify(loggedAdmin);
-      navigate(`/user/${loggedAdmin.id}`);
+      navigate(`/admin/${loggedAdmin.id}`);
     }
   };
 

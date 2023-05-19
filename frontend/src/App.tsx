@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import LoginPage from './pages/Login';
+import UserPage from './pages/UserPage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/user/:userId" element={<UserPage />} />
+          <Route path="/admin/:adminId" element={<AdminPage />} />
         </Routes>
       </Router>
     </div>

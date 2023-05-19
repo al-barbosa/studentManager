@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import UserService from '../services/userService';
 
 export default class UserController {
-
   userService = new UserService();
   
   public getAll = async (_req: Request, res: Response): Promise<Response> => {
@@ -38,6 +37,20 @@ export default class UserController {
       return res
         .status(200)
         .json(loggedUser);
+    } catch (e) {
+      const { code, message } = e as any;
+      return res
+        .status(code)
+        .json({ message });
+    }
+  };
+
+  public createNewUser = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const createdUser = await this.userService.createUser(req.body);
+      return res
+        .status(200)
+        .json(createdUser);
     } catch (e) {
       const { code, message } = e as any;
       return res

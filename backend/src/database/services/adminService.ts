@@ -5,12 +5,16 @@ import ErrorHandler from '../utils/errorHandler';
 export default class AdminsService {
 
   public getAll = async (): Promise<Admins[]> => {
-    const allAdmins = await Admins.findAll();
+    const allAdmins = await Admins.findAll({
+      attributes: {exclude: ['password']}
+    });
     return allAdmins;
   };
 
   public getAdmin = async (id: string): Promise<Admins> => {
-    const searchedUser = await Admins.findByPk(id);
+    const searchedUser = await Admins.findByPk(id, {
+      attributes: {exclude: ['password']}
+    });
     if (!searchedUser) throw new ErrorHandler('User not found', 404);
     return searchedUser;
   };

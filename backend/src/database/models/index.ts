@@ -24,9 +24,8 @@ class Categories extends Model {
   declare name: string;
 }
 
-class UsersCategoires extends Model {
-  declare user_id: number;
-  declare category_id: number;
+class UsersCategories extends Model {
+  declare id: number;
 }
 
 Users.init({
@@ -103,14 +102,14 @@ Categories.init({
   timestamps: false,
 });
 
-UsersCategoires.init({}, {
+UsersCategories.init({}, {
   underscored: true,
   sequelize: db,
-  modelName: 'usersCategoires',
+  modelName: 'users_categories',
   timestamps: false,
 });
 
-Users.belongsToMany(Categories, { through: UsersCategoires, as: 'category' })
-Categories.belongsToMany(Users, { through: UsersCategoires, as: 'user' })
+Users.belongsToMany(Categories, { through: UsersCategories, as: 'category', foreignKey: 'user_id' })
+Categories.belongsToMany(Users, { through: UsersCategories, as: 'users', foreignKey: 'categories_id' })
 
-export { Users, Admins, Categories, UsersCategoires }
+export { Users, Admins, Categories, UsersCategories }
