@@ -4,6 +4,7 @@ import AdminAPI from '../utils/adminAPI';
 import DashboardClasses from '../components/DashboardClasses';
 import RegUser from '../components/RegUser';
 import DashboardUsers from '../components/DashboardUsers';
+import AdminRequest from '../components/AdminRequest';
 
 const AdminPage: React.FC = () => {
   const [adminInfo, setAdminInfo] = useState({ id: '', name: '', email: '' });
@@ -12,6 +13,10 @@ const AdminPage: React.FC = () => {
 
   useEffect(() => {
     const localStorageUser = JSON.parse(localStorage.getItem('user') || '{}');
+    if (localStorageUser.role !== 'admin') {
+      navigate('/');
+    }
+    
     const localStorageId = localStorageUser.id;
 
     const adminAPI = new AdminAPI();
@@ -35,15 +40,28 @@ const AdminPage: React.FC = () => {
     setSelectedBtn('Dashboard');
   };
 
+  const handleRequest = () => {
+    setSelectedBtn('Request');
+  };
+
   return (
     <div>
       {adminInfo.name && <h1>{adminInfo.name}</h1>}
       <button onClick={handleDashboard}>Dashboard</button>
       <button onClick={handleUser}>Cadastrar usuário</button>
-      { selectedBtn === 'Dashboard' ? 
+      <button onClick={handleRequest}>Requisições</button>
+      { selectedBtn === 'Dashboard' &&
       <div>
         <DashboardClasses /> <DashboardUsers /> 
-      </div> : <RegUser /> }
+      </div>}
+      { selectedBtn === 'User' &&
+      <div>
+        <RegUser /> 
+      </div>}
+      { selectedBtn === 'Request' &&
+      <div>
+        <AdminRequest />
+      </div>}
     </div>
   );
 };

@@ -1,13 +1,13 @@
-class UserAPI {
+class RequestAPI {
   public getAll = async () => {
-    const URL = '/users';
+    const URL = '/requests';
     const response = await fetch(URL);
     const data = await response.json();
     return data;
   }
 
-  public async login(email: string, password: string) {
-    const URL = '/users/login';
+  public async newRequest(user_id: string, category_id: string) {
+    const URL = '/requests';
     const response = await fetch(URL, {
       method: "POST",
       headers: {
@@ -15,38 +15,39 @@ class UserAPI {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email,
-        password,
+        user_id,
+        category_id,
       })
     });
     const data = await response.json();
     return data;
   }
 
-  public getById = async (id: string) => {
-    const URL = `/users/${id}`;
-    const response = await fetch(URL);
+  public async deleteRequest(id: string) {
+    const URL = `/requests/${id}`;
+    const response = await fetch(URL, {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    });
     const data = await response.json();
     return data;
   }
-  
-  public async createNewUser(email: string, name: string, password: string) {
-    const URL = '/users';
+
+  public async acceptRequest(user_id: number, categories_id: number) {
+    const URL = `/requests/${user_id}/${categories_id}`;
     const response = await fetch(URL, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email,
-        name,
-        password,
-      })
     });
     const data = await response.json();
     return data;
   }
 }
 
-export default UserAPI;
+export default RequestAPI;

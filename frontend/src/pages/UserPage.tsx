@@ -1,32 +1,56 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import AdminAPI from '../utils/adminAPI';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UserAPI from '../utils/userAPI';
+import IUser from '../interfaces/userInterface';
+import AddCategories from '../components/AddCategorie';
 
 const UserPage: React.FC = () => {
+  const [userInfo, setUserInfo] = useState<IUser|null>();
+  const [showAdd, setShowAdd] = useState<boolean>(false)
   const navigate = useNavigate();
-  const { userId } = useParams();
-  const { id: cookiesId } = JSON.parse(document.cookie);
-
 
   useEffect(() => {
-    const cookies = JSON.parse(document.cookie);
-    const userId = cookies.id;
-    const adminAPI = new AdminAPI()
-
-    if (!userId) {
+    const localStorageUser = JSON.parse(localStorage.getItem('user') || '{}');
+    if (localStorageUser.role !== 'student') {
       navigate('/');
     }
 
-    // const getInfo = async (id: string) => {
-    //   const adminInfo = await adminAPI()
-    // }
+    const localStorageId = localStorageUser.id;
 
+    const userAPI = new UserAPI();
+
+    const getInfo = async (id: string) => {
+      const userInfo = await userAPI.getById(id);
+      if (!userInfo.id) {
+        navigate('/');
+      }
+      setUserInfo(userInfo);
+    };
+
+    getInfo(localStorageId);
   }, [navigate]);
+
+  const handleAddCategory = () => {
+    setShowAdd(true)
+  };
 
   return (
     <div>
       <h2>User Page</h2>
-      {/* Conteúdo da página do usuário */}
+      {userInfo && 
+      <div>
+        <h3>Categorias:</h3>
+        <ul>
+          {userInfo.category ?
+          userInfo.category.map((cat) => (
+            <li key={cat.id}>{cat.name}</li>
+          )) :
+          <h2>Sem categorias cadastradas</h2>}
+        </ul>
+      </div>}
+      <button onClick={handleAddCategory}>Adicionar Categoria</button>
+      {(showAdd && userInfo && userInfo.category) &&
+      <AddCategories categories={userInfo.category}/>}
     </div>
   );
 };

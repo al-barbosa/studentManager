@@ -43,11 +43,12 @@ const AdminLogin: React.FC = () => {
       setErrorMessage(loggedAdmin.message);
     }
     if (loggedAdmin.id) {
+      const adminWithRole = { ...loggedAdmin, role: 'admin' };
       setErrorMessage('');
-      localStorage.setItem('user', JSON.stringify(loggedAdmin));
+      localStorage.setItem('user', JSON.stringify(adminWithRole));
       navigate(`/admin`);
     }
-  };
+  };  
 
   return (
     <div>

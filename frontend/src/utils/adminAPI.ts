@@ -29,8 +29,6 @@ class AdminAPI {
     const data = await response.json();
     return data;
   }
-
-  // Outros métodos relacionados ao usuário, como recuperar informações do usuário, criar usuário, etc.
 }
 
 export default AdminAPI;

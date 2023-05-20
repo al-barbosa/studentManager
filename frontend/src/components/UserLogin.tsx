@@ -43,9 +43,10 @@ const UserLogin: React.FC = () => {
       setErrorMessage(loggedUser.message);
     }
     if (loggedUser.id) {
+      const userWithRole = { ...loggedUser, role: 'student' };
       setErrorMessage('');
-      localStorage.setItem('user', JSON.stringify(loggedUser));
-      navigate(`/user/${loggedUser.id}`);
+      localStorage.setItem('user', JSON.stringify(userWithRole));
+      navigate(`/user`);
     }
   };
 

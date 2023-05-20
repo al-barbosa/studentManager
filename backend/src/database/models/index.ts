@@ -28,6 +28,12 @@ class UsersCategories extends Model {
   declare id: number;
 }
 
+class UserRequests extends Model {
+  declare id: number;
+  declare user_id: number;
+  declare category_id: number;
+}
+
 Users.init({
   id: {
     type: INTEGER,
@@ -102,6 +108,28 @@ Categories.init({
   timestamps: false,
 });
 
+UserRequests.init({
+  id: {
+    type: INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  category_id: {
+    type: INTEGER,
+    allowNull: false,
+  },
+  user_id: {
+    type: INTEGER,
+    allowNull: false,
+  }
+}, {
+  underscored: true,
+  sequelize: db,
+  modelName: 'user_requests',
+  timestamps: false,
+});
+
 UsersCategories.init({}, {
   underscored: true,
   sequelize: db,
@@ -112,4 +140,9 @@ UsersCategories.init({}, {
 Users.belongsToMany(Categories, { through: UsersCategories, as: 'category', foreignKey: 'user_id' })
 Categories.belongsToMany(Users, { through: UsersCategories, as: 'users', foreignKey: 'categories_id' })
 
-export { Users, Admins, Categories, UsersCategories }
+UserRequests.belongsTo(Users, { foreignKey: 'user_id', as: 'user' })
+// Users.belongsTo(UserRequests);
+UserRequests.belongsTo(Categories, { foreignKey: 'category_id', as: 'category' })
+// Categories.belongsTo(UserRequests);
+
+export { Users, Admins, Categories, UsersCategories, UserRequests }
