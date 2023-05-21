@@ -1,0 +1,63 @@
+/* .chart {
+  justify-content: center;
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.bar {
+  background-color: steelblue;
+  margin-right: 10px;
+  position: relative;
+  width: 50px;
+  
+}
+
+.label1 {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: smaller;
+}
+
+.label2 {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: smaller;
+} */
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 30px;
+  background-color: #007bff;
+  margin-bottom: 5px;
+  transition: height 0.3s ease;
+}
+
+.bar:hover {
+  background-color: #0056b3;
+}
+
+.bar-label {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+}

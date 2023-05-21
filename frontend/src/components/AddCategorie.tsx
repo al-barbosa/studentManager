@@ -10,7 +10,7 @@ const AddCategories: React.FC<{
   categories: ICategory[] | null;
 }> = ({ categories }) => {
 
-  const [requests, setRequests] = useState<IRequest[] | null>(null);
+  // const [requests, setRequests] = useState<IRequest[] | null>(null);
   const [categoryList, setCategoryList] = useState<ICategory[] | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
@@ -23,7 +23,7 @@ const AddCategories: React.FC<{
     const getRequests = async () => {
       const retrievedRequests: IRequest[] = await requestAPI.getAll();
       const filteredRequests = retrievedRequests.filter((request) => request.user_id === localStorageId);
-      setRequests(filteredRequests);
+      // setRequests(filteredRequests);
       const idList: number[] = []
       filteredRequests?.map((req) => idList.push(req.category_id))
       const userInfo: IUser = await userAPI.getById(JSON.parse(localStorage.getItem('user') || '{}').id);

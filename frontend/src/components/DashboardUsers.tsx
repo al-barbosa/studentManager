@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UserAPI from '../utils/userAPI';
-import '../styles/DashboardClasses.css';
 import IUser from '../interfaces/userInterface';
 
 const DashboardUsers: React.FC = () => {

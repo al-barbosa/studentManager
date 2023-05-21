@@ -1,0 +1,6 @@
+export default interface IAdmin {
+  id?: string,
+  name: string,
+  email: string,
+  password?: string,
+}

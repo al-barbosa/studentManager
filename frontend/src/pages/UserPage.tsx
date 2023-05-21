@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import UserAPI from '../utils/userAPI';
 import IUser from '../interfaces/userInterface';
 import AddCategories from '../components/AddCategorie';
+import Header from '../components/Header';
 
 const UserPage: React.FC = () => {
   const [userInfo, setUserInfo] = useState<IUser|null>();
@@ -36,7 +37,7 @@ const UserPage: React.FC = () => {
 
   return (
     <div>
-      <h2>User Page</h2>
+      {userInfo && <Header name={userInfo.name}/>}
       {userInfo && 
       <div>
         <h3>Categorias:</h3>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminAPI from '../utils/adminAPI';
-import DashboardClasses from '../components/DashboardClasses';
-import RegUser from '../components/RegUser';
+import DashboardTime from '../components/DashboardTime';
 import DashboardUsers from '../components/DashboardUsers';
+import RegUser from '../components/RegUser';
 import AdminRequest from '../components/AdminRequest';
+import IAdmin from '../interfaces/adminInterface';
+import Header from '../components/Header';
 
 const AdminPage: React.FC = () => {
-  const [adminInfo, setAdminInfo] = useState({ id: '', name: '', email: '' });
+  const [adminInfo, setAdminInfo] = useState<IAdmin>({ id: '', name: '', email: '' });
   const [selectedBtn, setSelectedBtn] = useState('Dashboard')
   const navigate = useNavigate();
 
@@ -46,13 +48,13 @@ const AdminPage: React.FC = () => {
 
   return (
     <div>
-      {adminInfo.name && <h1>{adminInfo.name}</h1>}
+      {adminInfo && <Header name={adminInfo.name}/>}
       <button onClick={handleDashboard}>Dashboard</button>
       <button onClick={handleUser}>Cadastrar usuário</button>
       <button onClick={handleRequest}>Requisições</button>
       { selectedBtn === 'Dashboard' &&
       <div>
-        <DashboardClasses /> <DashboardUsers /> 
+        <DashboardTime /> <DashboardUsers /> 
       </div>}
       { selectedBtn === 'User' &&
       <div>
