@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UserAPI from '../utils/userAPI';
 import IUser from '../interfaces/userInterface';
+import '../styles/DashboardUsers.css'
 
 const DashboardUsers: React.FC = () => {
   const [users, setUsers] = useState<IUser[] | null>(null);
@@ -17,30 +18,32 @@ const DashboardUsers: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className='dashboardUsers'>
       <h3>Informação sobre alunos</h3>
-      <table className="userTable">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Atividades</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users &&
-            users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>
-                  {user.category &&
-                    user.category.map((category, index) => (
-                      <p key={index}>{category.name}</p>
-                    ))}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <div className="tableContainer">
+        <table className="userTable">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Atividades</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users &&
+              users.map((user) => (
+                <tr key={user.id}>
+                  <td className='userName'>{user.name}</td>
+                  <td className='catName'>
+                    {user.category &&
+                      user.category.map((category, index) => (
+                        <p key={index}>{category.name}</p>
+                      ))}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

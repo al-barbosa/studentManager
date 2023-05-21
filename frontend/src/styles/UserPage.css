@@ -1,0 +1,33 @@
+.userBody {
+  background-color: #D7D7D9;
+  padding-top: 20px;
+  height: 100vh;
+}
+
+.addBtn {
+  background-color: #515D73;
+  border: none;
+  border-radius: 5px;
+  color: #D7D7D9;
+  padding: 7px 7px;
+}
+
+.catList {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+ul {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+ }
+
+@media (min-width: 600px) {
+  .catList {
+    margin-left: 25px;
+  }
+}

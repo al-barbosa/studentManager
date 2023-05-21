@@ -5,7 +5,8 @@ import ErrorHandler from '../utils/errorHandler';
 export default class RequestService {
   public getAll = async (): Promise<UserRequests[]> => {
     const allRequests = await UserRequests.findAll({
-      include: ['user', 'category']
+      include: ['user', 'category'],
+      order: [['id', 'ASC']],
     });
     return allRequests;
   };

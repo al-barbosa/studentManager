@@ -30,13 +30,23 @@
   font-size: smaller;
 } */
 
+.dashboardTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .chart-container {
   display: flex;
+  background-color: #8694A6;
+  border-radius: 10px;
   justify-content: space-between;
   align-items: flex-end;
   height: 200px;
   padding: 20px;
+  margin: 4px;
   overflow-x: auto;
+  box-shadow: 5px 5px 8px #8694A6;
 }
 
 .bar-container {
@@ -60,4 +70,10 @@
   margin-top: 5px;
   font-size: 12px;
   text-align: center;
+}
+
+@media (min-width: 600px) {
+  .chart-container {
+    width: 600px;
+  }
 }

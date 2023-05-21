@@ -1,0 +1,25 @@
+.adminPage {
+  background-color: #D7D7D9;
+  height: 100vh;
+}
+
+.selectedBtn {
+  background-color: #515D73;
+  border: none;
+  padding: 10px;
+}
+
+.otherBtn {
+  background-color: #65728C;
+  border: none;
+  color: #000000;
+  padding: 10px;
+}
+
+.dashBtn {
+  border-bottom-left-radius:10px;
+}
+
+.reqBtn {
+  border-bottom-right-radius:10px;
+}

@@ -12,7 +12,8 @@ export default class UserService {
           attributes: [], // Excluir atributos adicionais da tabela associativa
         },
       },
-      attributes: {exclude: ['password']}
+      attributes: {exclude: ['password']},
+      order: [['id', 'ASC']],
     });
     return allUsers;
   };

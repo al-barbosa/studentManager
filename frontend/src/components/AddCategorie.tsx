@@ -5,14 +5,16 @@ import UserAPI from '../utils/userAPI';
 import RequestAPI from '../utils/reqAPI';
 import CategoriesAPI from '../utils/categoriesAPI';
 import IUser from '../interfaces/userInterface';
+import '../styles/AddCategories.css';
 
 const AddCategories: React.FC<{
   categories: ICategory[] | null;
-}> = ({ categories }) => {
+  setShowAdd: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ categories, setShowAdd }) => {
 
-  // const [requests, setRequests] = useState<IRequest[] | null>(null);
   const [categoryList, setCategoryList] = useState<ICategory[] | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const userAPI = new UserAPI();
@@ -22,8 +24,8 @@ const AddCategories: React.FC<{
     const localStorageId = localStorageUser.id;
     const getRequests = async () => {
       const retrievedRequests: IRequest[] = await requestAPI.getAll();
-      const filteredRequests = retrievedRequests.filter((request) => request.user_id === localStorageId);
-      // setRequests(filteredRequests);
+      const filteredRequests = retrievedRequests
+        .filter((request) => request.user_id === localStorageId);
       const idList: number[] = []
       filteredRequests?.map((req) => idList.push(req.category_id))
       const userInfo: IUser = await userAPI.getById(JSON.parse(localStorage.getItem('user') || '{}').id);
@@ -34,6 +36,7 @@ const AddCategories: React.FC<{
         (category) => !idList.includes(category.id)
       );
       setCategoryList(filteredCategories);
+      setLoading(false)
     };
     getRequests();
   }, []);
@@ -57,31 +60,43 @@ const AddCategories: React.FC<{
     setSelectedCategory(null);
   };
 
-  return (
-    <div>
-      {categoryList && categoryList.length > 0 && (
-        <form onSubmit={(e) => {
-          e.preventDefault();
-          if (selectedCategory) {
-            handleSubmit(selectedCategory);
-          }
-        }}>
-          <h3>Adicionar Categoria</h3>
-          <select value={selectedCategory || ''} onChange={handleCategoryChange}>
-            <option value="">Selecione uma categoria</option>
-            {categoryList.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-          <button type="submit">Adicionar</button>
-        </form>
-      )}
+  const handleClose = () => {
+    setShowAdd(false);
+  };
 
-      {(!categoryList || categoryList.length === 0) && (
-        <p>Todas as categorias estão selecionadas.</p>
-      )}
+
+  return (
+    <div className='addCatContainer'>
+      <div className="addOptions">
+        {loading ?
+          <h1>Carregando...</h1> :
+          <div>
+            <button className='closeBtn' onClick={handleClose}>X</button>
+            {categoryList && categoryList.length > 0 && (
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (selectedCategory) {
+                  handleSubmit(selectedCategory);
+                }
+              }}>
+                <div className="formContainer">
+                  <select value={selectedCategory || ''} onChange={handleCategoryChange}>
+                    <option value="">Selecione uma categoria</option>
+                    {categoryList.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="submit">Adicionar</button>
+                </div>
+              </form>
+            )}
+            {(!categoryList || categoryList.length === 0) && (
+              <p>Todas as categorias estão selecionadas.</p>
+            )}
+          </div>}
+      </div>
     </div>
   );
 };

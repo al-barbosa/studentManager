@@ -1,0 +1,33 @@
+.userName {
+  background-color: #65728C;
+  padding: 0px 10px;
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+}
+
+.catName {
+  background-color: #515D73;
+  padding: 0px 20px;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+}
+
+.dashboardUsers {
+  margin-top: 50px;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.userTable {
+  /* border-collapse: collapse; */
+  border-spacing: 0px 10px;
+}
+
+@media (min-width: 600px) {
+  .userTable {
+    width: 400px;
+  }
+}

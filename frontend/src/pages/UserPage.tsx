@@ -4,10 +4,14 @@ import UserAPI from '../utils/userAPI';
 import IUser from '../interfaces/userInterface';
 import AddCategories from '../components/AddCategorie';
 import Header from '../components/Header';
+import '../styles/UserPage.css'
+import IRequest from '../interfaces/requestInterface';
+import RequestAPI from '../utils/reqAPI';
 
 const UserPage: React.FC = () => {
-  const [userInfo, setUserInfo] = useState<IUser|null>();
+  const [userInfo, setUserInfo] = useState<IUser | null>();
   const [showAdd, setShowAdd] = useState<boolean>(false)
+  const [requests, setRequests] = useState<IRequest[] | null>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +23,7 @@ const UserPage: React.FC = () => {
     const localStorageId = localStorageUser.id;
 
     const userAPI = new UserAPI();
+    const requestAPI = new RequestAPI()
 
     const getInfo = async (id: string) => {
       const userInfo = await userAPI.getById(id);
@@ -26,10 +31,14 @@ const UserPage: React.FC = () => {
         navigate('/');
       }
       setUserInfo(userInfo);
+      const retrievedRequests: IRequest[] = await requestAPI.getAll();
+      const filteredRequests = retrievedRequests
+        .filter((request) => request.user_id === localStorageId);
+      setRequests(filteredRequests);
     };
 
-    getInfo(localStorageId);
-  }, [navigate]);
+    getInfo(localStorageId);    
+  }, [navigate, showAdd]);
 
   const handleAddCategory = () => {
     setShowAdd(true)
@@ -37,21 +46,37 @@ const UserPage: React.FC = () => {
 
   return (
     <div>
-      {userInfo && <Header name={userInfo.name}/>}
-      {userInfo && 
-      <div>
-        <h3>Categorias:</h3>
-        <ul>
-          {userInfo.category ?
-          userInfo.category.map((cat) => (
-            <li key={cat.id}>{cat.name}</li>
-          )) :
-          <h2>Sem categorias cadastradas</h2>}
-        </ul>
-      </div>}
-      <button onClick={handleAddCategory}>Adicionar Categoria</button>
-      {(showAdd && userInfo && userInfo.category) &&
-      <AddCategories categories={userInfo.category}/>}
+      {userInfo && <Header name={userInfo.name} />}
+      <div className="userBody">
+      <button className='addBtn' onClick={handleAddCategory}>Adicionar Categoria</button>
+        {(showAdd && userInfo && userInfo.category) &&
+          <AddCategories
+            categories={userInfo.category}
+            setShowAdd={setShowAdd}
+          />}
+        {userInfo &&
+          <div className='catList'>
+            <h3>Categorias cadastradas:</h3>
+            <ul>
+              {userInfo.category ?
+                userInfo.category.map((cat) => (
+                  <li className='listItem' key={cat.id}>{cat.name}</li>
+                )) :
+                <h2>Sem categorias cadastradas</h2>}
+            </ul>
+          </div>}
+          {userInfo &&
+          <div className='catList'>
+            <h3>Categorias aguardando confirmação:</h3>
+            <ul>
+              {requests ?
+                requests.map((req) => (
+                  <li className='listItem' key={req.id}>{req.category.name}</li>
+                )) :
+                <h2>Sem categorias cadastradas</h2>}
+            </ul>
+          </div>}
+      </div>
     </div>
   );
 };
