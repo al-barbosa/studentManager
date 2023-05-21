@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import '../styles/Header.css'
 
 const Header: React.FC<{ name: string }> = ({ name }) => {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const Header: React.FC<{ name: string }> = ({ name }) => {
   };  
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <button onClick={handleLogout}>Logout</button>
+    <div className='headerContainer'>
+      <h1 className='headerName'>{name}</h1>
+      <button className='logoutBtn' onClick={handleLogout}>Logout</button>
     </div>
   );
 };

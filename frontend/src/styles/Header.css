@@ -1,0 +1,19 @@
+.headerContainer {
+  background-color: #222326;
+  display: flex;
+  justify-content: space-between;
+  /* padding-top: 10px; */
+  color: #D7D7D9;
+}
+
+.headerName {
+  margin-left: 15px;
+}
+
+.logoutBtn {
+  background-color: #D7D7D9;
+  border: none;
+  color: #222326;
+  margin: 20px 15px;
+  padding: 0px 15px;
+}
