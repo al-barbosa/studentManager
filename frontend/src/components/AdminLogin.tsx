@@ -48,29 +48,32 @@ const AdminLogin: React.FC = () => {
       localStorage.setItem('user', JSON.stringify(adminWithRole));
       navigate(`/admin`);
     }
-  };  
+  };
 
   return (
     <div>
-      <h3>Admin Login</h3>
       <form onSubmit={handleAdminLogin}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={loginForm.email}
-          onChange={handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          value={loginForm.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Entrar</button>
+        <div className='loginForm'>
+          <input
+            className='emailInput'
+            type='text'
+            name='email'
+            placeholder='Email do administrador'
+            value={loginForm.email}
+            onChange={handleInputChange}
+          />
+          <input
+            className='passwordInput'
+            type='password'
+            name='password'
+            placeholder='Senha'
+            value={loginForm.password}
+            onChange={handleInputChange}
+          />
+          <button className='submitBtn' type='submit'>Entrar</button>
+        </div>
       </form>
-      {errorMessage && <span id="errorMessage">{errorMessage}</span>}
+      {errorMessage && <span id='errorMessage'>{errorMessage}</span>}
     </div>
   );
 };

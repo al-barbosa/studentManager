@@ -1,0 +1,64 @@
+.loginPage {
+  background-color: #D7D7D9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginInfo {
+  border-radius: 5%;
+  background-color: #65728C;
+  padding-bottom: 5px;
+}
+
+.chooseBtns {
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.chooseBtns button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.chooseBtns .userBtn {
+  border-top-left-radius:10px;
+  background-color: transparent;
+  color: #000000;
+  transition: background-color 1s, color 1s;
+}
+
+.chooseBtns .adminBtn {
+  border-top-right-radius:10px;
+  background-color: transparent;
+  color: #000000;
+  transition: background-color 1s, color 1s;
+}
+
+.chooseBtns .userBtn.unselected {
+  background-color: #515D73;
+  transition: background-color 1s, color 1s;
+}
+
+.chooseBtns .adminBtn.unselected {
+  background-color: #515D73;
+  transition: background-color 1s, color 1s;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.submitBtn {
+  background-color: #8694A6;
+  border: none;
+  width: 30%;
+}

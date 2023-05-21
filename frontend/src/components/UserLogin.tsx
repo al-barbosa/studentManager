@@ -53,25 +53,28 @@ const UserLogin: React.FC = () => {
 
   return (
     <div>
-      <h3>User Login</h3>
       <form onSubmit={handleUserLogin}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={loginForm.email}
-          onChange={handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          value={loginForm.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Entrar</button>
+        <div className='loginForm'>
+          <input
+            className='emailInput'
+            type='text'
+            name='email'
+            placeholder='Email do aluno'
+            value={loginForm.email}
+            onChange={handleInputChange}
+          />
+          <input
+            className='passwordInput'
+            type='password'
+            name='password'
+            placeholder='Senha'
+            value={loginForm.password}
+            onChange={handleInputChange}
+          />
+          <button className='submitBtn' type='submit'>Entrar</button>
+        </div>
       </form>
-      {errorMessage && <span id="errorMessage">{errorMessage}</span>}
+      {errorMessage && <span id='errorMessage'>{errorMessage}</span>}
     </div>
   );
 };
