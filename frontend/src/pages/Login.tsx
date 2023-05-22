@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import UserLogin from '../components/UserLogin';
 import AdminLogin from '../components/AdminLogin';
-import '../styles/Login.css'
-
-type LoginType = 'user' | 'admin';
+import '../styles/Login.css';
 
 const LoginPage: React.FC = () => {
-  const [loginType, setLoginType] = useState<LoginType>('user');
+  const [loginType, setLoginType] = useState<'user' | 'admin'>('user');
 
-  const handleLogin = (type: LoginType) => {
+  /**
+   * Altera o tipo de login para exibir o formulário correspondente.
+   * @param type O tipo de login ('user' ou 'admin').
+   */
+  const handleLogin = (type: 'user' | 'admin'): void => {
     setLoginType(type);
   };
 

@@ -60,3 +60,12 @@
 .accBtn {
   background-color: #6c0;
 }
+
+@media (min-width: 700px) {
+  .reqContainer {
+    justify-content: center;
+    width: 700px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

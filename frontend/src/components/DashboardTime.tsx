@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/DashboardTime.css';
 import IUserWithTime from '../interfaces/userWithTimeInterface';
 import UserAPI from '../utils/userAPI';
+import getFirstName from '../utils/getFirstName';
+import '../styles/DashboardTime.css';
 
 const DashboardTime: React.FC = () => {
   const [users, setUsers] = useState<IUserWithTime[] | null>(null);
@@ -9,7 +10,7 @@ const DashboardTime: React.FC = () => {
   useEffect(() => {
     const userAPI = new UserAPI();
 
-    const getUsers = async () => {
+    const getUsers = async (): Promise<void> => {
       const users = await userAPI.getAll();
       setUsers(users);
     };
@@ -29,7 +30,7 @@ const DashboardTime: React.FC = () => {
                 style={{ height: `${user.total_time}px` }}
                 title={`hours`}
               ></div>
-              <span className="bar-label">{user.name}</span>
+              <span className="bar-label">{getFirstName(user.name)}</span>
               <span className="bar-label">{user.total_time} horas</span>
             </div>
           ))}

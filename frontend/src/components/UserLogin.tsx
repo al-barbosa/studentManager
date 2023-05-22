@@ -23,7 +23,11 @@ const UserLogin: React.FC = () => {
 
   const userAPI: UserAPI = new UserAPI();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /**
+   * Atualiza os estados com base na mudança de valor dos inputs.
+   * @param e O evento de mudança de valor do input.
+   */
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setLoginForm((prevLoginForm) => ({
       ...prevLoginForm,
@@ -31,11 +35,18 @@ const UserLogin: React.FC = () => {
     }));
   };
 
+  /**
+   * Remove o item 'user' do localStorage.
+   */
   const eraseLocalStorage = (): void => {
     localStorage.removeItem('user');
   };
 
-  const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  /**
+   * Envia do formulário de login do usuário e redireciona para próxima página.
+   * @param e O evento de envio do formulário.
+   */
+  const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const loggedUser = await userAPI.login(loginForm.email, loginForm.password);
     if (loggedUser.message) {
@@ -49,7 +60,6 @@ const UserLogin: React.FC = () => {
       navigate(`/user`);
     }
   };
-
 
   return (
     <div>

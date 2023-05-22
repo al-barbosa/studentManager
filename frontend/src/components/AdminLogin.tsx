@@ -19,22 +19,33 @@ const AdminLogin: React.FC = () => {
     eraseLocalStorage();
   }, []);
 
-  const eraseLocalStorage = (): void => {
-    localStorage.removeItem('user');
-  };
-
   const adminAPI = new AdminAPI();
   const navigate = useNavigate();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /**
+   * Atualiza os estados com base na mudança de valor dos inputs.
+   * @param e O evento de mudança de valor do input.
+   */
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setLoginForm((prevLoginForm) => ({
       ...prevLoginForm,
       [name]: value,
     }));
+  }
+
+  /**
+   * Remove o item 'user' do localStorage.
+   */
+  const eraseLocalStorage = (): void => {
+    localStorage.removeItem('user');
   };
 
-  const handleAdminLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  /**
+   * Envia do formulário de login do administrador e redireciona para próxima página.
+   * @param e O evento de envio do formulário.
+   */
+  const handleAdminLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     eraseLocalStorage();
     const loggedAdmin = await adminAPI.login(loginForm.email, loginForm.password);

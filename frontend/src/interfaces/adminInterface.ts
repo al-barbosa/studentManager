@@ -1,6 +1,7 @@
 export default interface IAdmin {
-  id?: string,
-  name: string,
-  email: string,
-  password?: string,
+  id?: string;
+  name: string;
+  email: string;
+  message?: string;
+  password?: string;
 }

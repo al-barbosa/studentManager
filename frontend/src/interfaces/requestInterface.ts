@@ -2,6 +2,7 @@ export default interface IRequest {
   id: number;
   category_id: number;
   user_id: number;
+  createdAt: string;
   user: {
     id: number;
     name: string;

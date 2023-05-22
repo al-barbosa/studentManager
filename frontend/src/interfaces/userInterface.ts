@@ -1,10 +1,11 @@
 import ICategory from "./categoryInterface";
 
 export default interface IUser {
-  id?: string,
-  name: string,
-  email: string,
-  password?: string,
-  total_time?: number,
+  id?: number;
+  name: string;
+  email: string;
+  message?: string;
+  password?: string;
+  total_time?: number;
   category?: ICategory[]
 }

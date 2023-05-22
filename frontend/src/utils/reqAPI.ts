@@ -1,12 +1,24 @@
+import IRequest from "../interfaces/requestInterface";
+
 class RequestAPI {
-  public getAll = async () => {
+  /**
+   * Obtém todas as requisições abertas.
+   * @returns Promise com um array de requisições.
+   */
+  public getAll = async (): Promise<IRequest[]> => {
     const URL = '/requests';
     const response = await fetch(URL);
     const data = await response.json();
     return data;
   }
 
-  public async newRequest(user_id: string, category_id: string) {
+  /**
+   * Cria uma nova requisição.
+   * @param user_id O ID do usuário.
+   * @param category_id O ID da categoria.
+   * @returns Promise com os dados da nova requisição.
+   */
+  public newRequest = async (user_id: string, category_id: string): Promise<IRequest> => {
     const URL = '/requests';
     const response = await fetch(URL, {
       method: "POST",
@@ -23,7 +35,12 @@ class RequestAPI {
     return data;
   }
 
-  public async deleteRequest(id: string) {
+  /**
+   * Deleta uma requisição por ID.
+   * @param id O ID da requisição a ser deletada.
+   * @returns Promise com os dados da requisição deletada.
+   */
+  public deleteRequest = async (id: string): Promise<IRequest> => {
     const URL = `/requests/${id}`;
     const response = await fetch(URL, {
       method: "DELETE",
@@ -36,8 +53,14 @@ class RequestAPI {
     return data;
   }
 
-  public async acceptRequest(user_id: number, categories_id: number) {
-    const URL = `/requests/${user_id}/${categories_id}`;
+  /**
+   * Aceita uma requisição.
+   * @param user_id O ID do usuário.
+   * @param category_id O ID da categoria.
+   * @returns Promise com os dados da requisição aceita.
+   */
+  public acceptRequest = async (user_id: number, category_id: number): Promise<IRequest> => {
+    const URL = `/requests/${user_id}/${category_id}`;
     const response = await fetch(URL, {
       method: "POST",
       headers: {
