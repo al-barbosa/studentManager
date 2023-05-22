@@ -110,6 +110,7 @@ const RegUser: React.FC = () => {
             <br />
             <button
               type="submit"
+              className="subBtn"
               disabled={!user.name || !user.email || !user.password || user.password.length < 6}
             >
               Efetuar cadastro
@@ -121,9 +122,8 @@ const RegUser: React.FC = () => {
           </form>
         </div>
       ) : (
-        <div>
+        <div className="regOneMore">
           <h3>Novo usuário cadastrado com sucesso!</h3>
-          <span>{`Cadastro de ${user.name} realizado com sucesso!`}</span>
           <button type="button" onClick={handleNewRegister}>
             Registrar novo usuário
           </button>

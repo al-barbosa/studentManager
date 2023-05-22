@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import '../styles/UserPage.css';
 import IRequest from '../interfaces/requestInterface';
 import RequestAPI from '../utils/reqAPI';
+import convertDateFormat from '../utils/dateFormat';
 
 const UserPage: React.FC = () => {
   const [userInfo, setUserInfo] = useState<IUser | null>();
@@ -62,38 +63,41 @@ const UserPage: React.FC = () => {
         {showAdd && userInfo && userInfo.category && (
           <AddCategories categories={userInfo.category} setShowAdd={setShowAdd} />
         )}
-        {userInfo && (
-          <div className="catList">
-            <h3>Categorias cadastradas:</h3>
-            <ul>
-              {userInfo.category ? (
-                userInfo.category.map((cat) => (
-                  <li className="listItem" key={cat.id}>
-                    {cat.name}
-                  </li>
-                ))
-              ) : (
-                <h2>Sem categorias cadastradas</h2>
-              )}
-            </ul>
-          </div>
-        )}
-        {userInfo && (
-          <div className="catList">
-            <h3>Categorias aguardando confirmação:</h3>
-            <ul>
-              {requests ? (
-                requests.map((req) => (
-                  <li className="listItem" key={req.id}>
-                    {req.category.name}
-                  </li>
-                ))
-              ) : (
-                <h2>Sem categorias cadastradas</h2>
-              )}
-            </ul>
-          </div>
-        )}
+        <div className={`${showAdd ? 'blurPage' : 'mainPage'}`}>
+          {userInfo && (
+            <div className="catList">
+              <h3>Categorias cadastradas:</h3>
+              <ul>
+                {userInfo.category ? (
+                  userInfo.category.map((cat) => (
+                    <li className="listItem" key={cat.id}>
+                      <div className="listName">{cat.name}</div>
+                    </li>
+                  ))
+                ) : (
+                  <h2>Sem categorias cadastradas</h2>
+                )}
+              </ul>
+            </div>
+          )}
+          {userInfo && (
+            <div className="catList">
+              <h3>Categorias aguardando confirmação:</h3>
+              <ul>
+                {requests ? (
+                  requests.map((req) => (
+                    <li className="listItem" key={req.id}>
+                      <div className="reqName">{req.category.name}</div>
+                      <div className="reqDate">Criado em: {convertDateFormat(req.createdAt)}</div>
+                    </li>
+                  ))
+                ) : (
+                  <h2>Sem categorias cadastradas</h2>
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
