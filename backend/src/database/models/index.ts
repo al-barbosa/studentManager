@@ -61,7 +61,7 @@ Users.init({
   underscored: true,
   sequelize: db,
   modelName: 'users',
-  timestamps: false,
+  timestamps: true,
 });
 
 Admins.init({
@@ -127,14 +127,14 @@ UserRequests.init({
   underscored: true,
   sequelize: db,
   modelName: 'user_requests',
-  timestamps: false,
+  timestamps: true,
 });
 
 UsersCategories.init({}, {
   underscored: true,
   sequelize: db,
   modelName: 'users_categories',
-  timestamps: false,
+  timestamps: true,
 });
 
 Users.belongsToMany(Categories, { through: UsersCategories, as: 'category', foreignKey: 'user_id' })
