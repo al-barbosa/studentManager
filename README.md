@@ -28,7 +28,7 @@ Já para os alunos, as funcionalidades são:
 -   Node.js
 -   MySQL
 
-## Instalação
+## Instruções de uso
 Para a correta ligação entre o a página e a API, é necessário primeiro garantir que o BackEnd esteja rodando corretamente. 
 Após isso, basta inicializar o FrontEnd para ter acesso à aplicação.
 
@@ -44,7 +44,7 @@ Para instalar e rodar a página, entre na pasta correspondente e siga as instru�
 `cd frontend/`
 
 ## Como usar
-Com a aplicação rodando, é possível acessar alguns dos perfis criados para teste no BackEnd. Abaixo, estão os emails criados. Em todos os casos, a senha é sempre 123456. É importante lembrar de, na tela de login, informar se será feito ingresso como usuário ou administrador.
+Com a aplicação e a API rodando, é possível acessar alguns dos perfis criados para teste no BackEnd. Abaixo, estão os emails criados. Em todos os casos, a senha é sempre 123456. É importante lembrar de, na tela de login, informar se será feito ingresso como usuário ou administrador.
 
 | Email  | Categoria |
 | ------------- | ------------- |
