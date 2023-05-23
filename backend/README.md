@@ -12,6 +12,7 @@ Configure-o com base na tabela abaixo:
 | MYSQL_HOST | Hostname do banco de dados  |
 | MYSQL_PORT | Porta de acesso ao banco de dados  |
 | APP_PORT | Porta de acesso à API |
+
 É importante frisar que a variável APP_PORT irá oferecer a porta de acesso à API. O Frontend foi configurado, no package.json para usar como proxy a porta 3070. Se este valor for alterado no .env, é importante que a mesma alteraçãos seja feita no package.json localizado na raiz do FrontEnd.
 Feitas as alterações, renomeie o arquivo para .env
 
