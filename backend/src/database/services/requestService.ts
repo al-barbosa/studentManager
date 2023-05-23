@@ -54,11 +54,14 @@ export default class RequestService {
    * @throws Um ErrorHandler com a mensagem 'Algo deu errado, tente novamente.' se algo der errado durante o processo.
    */
   public acceptRequest = async (user_id: string, category_id: string): Promise<{}> => {
+    console.log(user_id, category_id)
+    
     const nUserCat = await UsersCategories.create({
       user_id,
-      category_id,
+      categories_id: category_id,
     });
 
+    console.log(nUserCat)
     if (nUserCat) {
       await UserRequests.destroy({ where: { user_id, category_id } });
       return nUserCat;
