@@ -1,53 +1,63 @@
-.png1 {
-  width: 50%;
-  height: 50px;
-  background-image: url('../imgs/1.png');;
-}
-
 .userCats {
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
-.nCatsContainer {
-  
+.infoHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 430px;
+}
+
+.infoContainer {
+  padding: 5px 0px 0px 5px;
   border-radius: 5%;
   margin-left: 10px;
-  width: 140px;
+  width: 118px;
   background-color: #d7d7d9be;
-  box-shadow: #d7d7d9be;
+  box-shadow: 5px 5px 5px#d7d7d9be;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border: 1px solid black;
 }
 
-.nCatsHead {
+.infoHead {
   margin: 0px;
 }
 
-.nCatsInfo {
+.infoInfo {
   font-weight: bolder;
   font-size: x-large;
   margin: 0px;
-  margin-left: 20px;
 }
 
-.nCatsText {
-  align-items: flex-start;
+.infoText {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.nCatsImg {
-  border-radius: 10%;
-  padding: 2px;
+.infoImg {
+  display: visible;
+  padding-right: 2px
 }
 
 .catList {
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 400px;
   align-items: flex-start;
   display: flex;
-  flex-direction: column;
-  margin-left: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-top: 15px;
 }
 
 .listItem {
@@ -57,9 +67,95 @@
   padding-bottom: 10px;
 }
 
-ul {
-  align-items: flex-start;
+.catContiner {
+  background-color: #d7d7d9be;
+  box-shadow: 5px 5px 5px#d7d7d9be;
+  border-radius: 5px;
+  flex-direction: row;
   display: flex;
-  flex-direction: column;
-  list-style-type: none;
+  padding: 5px;
+  gap: 10px;
+  align-items: center;
+}
+
+.catListName {
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+.progressBar {
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 1em;
+  position: relative;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.progressBar div {
+  background-size: 23em 0.25em;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+}
+
+.insideBar1 {
+  width: 20px;
+  background-color: #e04542;
+}
+
+.insideBar2 {
+  width: 40px;
+  background-color: #e07942;
+}
+
+.insideBar3 {
+  width: 50px;
+  background-color: #e0cb42;
+}
+
+.insideBar4 {
+  width: 70px;
+  background-color: #a1e042;
+}
+
+.insideBar5 {
+  width: 90px;
+  background-color: #5ce042;
+}
+
+
+ @media (max-width: 450px){
+  .catList {
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 0px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 15px;
+    padding-right: 165px;
+  }
+
+  .infoHeader {
+    width: 350px;
+    gap: 0px;
+  }
+
+  .infoContainer {
+    width: 100px;
+  }
+
+  .infoImg {
+    display: none;
+  }
+ }
+
+ @media (min-width: 600px){
+  .userCats {
+    padding-top: 20px;
+  }  
  }

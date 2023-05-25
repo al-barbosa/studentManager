@@ -6,9 +6,9 @@ import Header from '../components/Header';
 import '../styles/UserPage.css';
 import IRequest from '../interfaces/requestInterface';
 import RequestAPI from '../utils/reqAPI';
-import convertDateFormat from '../utils/dateFormat';
 import UserCats from '../components/UserCats';
 import IUserWithTime from '../interfaces/userWithTimeInterface';
+import UserReqs from '../components/UserReqs';
 
 const UserPage: React.FC = () => {
   const [userInfo, setUserInfo] = useState<IUserWithTime | null>();
@@ -39,9 +39,8 @@ const UserPage: React.FC = () => {
       );
       setRequests(filteredRequests);
     };
-
     getInfo(localStorageId);
-  }, [navigate]);
+  }, [navigate, selectedButton]);
 
   const handleButtonClick = (buttonName: string): void => {
     setSelectedButton(buttonName);
@@ -83,24 +82,8 @@ const UserPage: React.FC = () => {
               userInfo={userInfo}
             />
           )}
-          {selectedButton === 'Pendente' && userInfo && (
-            <div className="mainCat">
-              <div className="catList">
-                <h3>Categorias aguardando confirmação:</h3>
-                <ul>
-                  {requests ? (
-                    requests.map((req) => (
-                      <li className="listItem" key={req.id}>
-                        <div className="reqName">{req.category.name}</div>
-                        <div className="reqDate">Criado em: {convertDateFormat(req.createdAt)}</div>
-                      </li>
-                    ))
-                  ) : (
-                    <h2>Sem categorias cadastradas</h2>
-                  )}
-                </ul>
-              </div>
-            </div>
+          {selectedButton === 'Pendente' && userInfo && requests && (
+            <UserReqs requests={requests} />
           )}
         </div>
       </div>

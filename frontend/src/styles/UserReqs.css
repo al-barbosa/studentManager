@@ -1,0 +1,75 @@
+.userReqs {
+  padding-top: 60px;
+}
+
+.listReqContainer {
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 400px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  flex-wrap: wrap;
+  gap: 0px;
+}
+
+.allReqContainer {
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-right: 25px;
+  padding-top: 10px;
+}
+
+.reqTitle {
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  padding-top: 20px;
+  padding-right: 130px;
+  width: 0px;
+}
+
+.reqContainer {
+  background-color: #d7d7d9be;
+  box-shadow: 5px 5px 5px#d7d7d9be;
+  border-radius: 5px;
+  padding: 5px;
+  gap: 10px;
+  align-items: center;
+}
+
+.reqListName {
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 450px){
+  .allReqContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    padding-left: 70px;
+    padding-top: 10px;
+    width: 300px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 600px){
+  .reqTitle {
+    padding-top: 0px;
+  }
+
+  .allReqContainer {
+    padding-right: 100px;
+  }
+}
