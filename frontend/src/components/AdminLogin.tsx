@@ -62,7 +62,7 @@ const AdminLogin: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='formInfo'>
       <form onSubmit={handleAdminLogin}>
         <div className='loginForm'>
           <input

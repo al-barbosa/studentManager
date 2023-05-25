@@ -16,13 +16,15 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className='loginPage'>
-      <div className="loginInfo">
-        <div className='chooseBtns'>
-          <button className={`userBtn ${loginType !== 'user' ? 'unselected' : ''}`} onClick={() => handleLogin('user')}>User Login</button>
-          <button className={`adminBtn ${loginType !== 'admin' ? 'unselected' : ''}`} onClick={() => handleLogin('admin')}>Admin Login</button>
+      <div className="backGround">
+        <div className="loginInfo">
+          <div className='chooseBtns'>
+            <button className={`userBtn ${loginType !== 'user' ? 'unselected' : ''}`} onClick={() => handleLogin('user')}>User Login</button>
+            <button className={`adminBtn ${loginType !== 'admin' ? 'unselected' : ''}`} onClick={() => handleLogin('admin')}>Admin Login</button>
+          </div>
+          {loginType === 'user' && <UserLogin />}
+          {loginType === 'admin' && <AdminLogin />}
         </div>
-        {loginType === 'user' && <UserLogin />}
-        {loginType === 'admin' && <AdminLogin />}
       </div>
     </div>
   );

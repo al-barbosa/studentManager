@@ -62,7 +62,7 @@ const UserLogin: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='formInfo'>
       <form onSubmit={handleUserLogin}>
         <div className='loginForm'>
           <input

@@ -5,15 +5,23 @@ module.exports = {
     await queryInterface.bulkInsert('categories', [
       {
         id: 1,
-        name: 'Português',
+        name: 'Matemática',
       },
       {
         id: 2,
-        name: 'Estatística',
+        name: 'Biologia',
       },
       {
         id: 3,
         name: 'Química',
+      },
+      {
+        id: 4,
+        name: 'Física',
+      },
+      {
+        id: 5,
+        name: 'Geometria',
       },
     ], {});
   },

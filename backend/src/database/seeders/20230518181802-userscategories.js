@@ -15,6 +15,12 @@ module.exports = {
       updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
     {
+      user_id: 1,
+      categories_id: 4,
+      created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+    },
+    {
       user_id: 2,
       categories_id: 3,
       created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -23,6 +29,18 @@ module.exports = {
     {
       user_id: 2,
       categories_id: 1,
+      created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+    },
+    {
+      user_id: 2,
+      categories_id: 4,
+      created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+      updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+    },
+    {
+      user_id: 2,
+      categories_id: 5,
       created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
     },

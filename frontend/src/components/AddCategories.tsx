@@ -10,8 +10,7 @@ import IUserWithTime from '../interfaces/userWithTimeInterface';
 
 const AddCategories: React.FC<{
   categories: ICategory[] | null;
-  setShowAdd: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ categories, setShowAdd }) => {
+}> = ({ categories }) => {
   const [categoryList, setCategoryList] = useState<ICategory[] | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -79,13 +78,6 @@ const AddCategories: React.FC<{
     setSelectedCategory(null);
   };
 
-  /**
-   * Manipula o fechamento do componente.
-   */
-  const handleClose = (): void => {
-    setShowAdd(false);
-  };
-
   return (
     <div className="addCatContainer">
       <div className="addOptions">
@@ -93,9 +85,6 @@ const AddCategories: React.FC<{
           <h1>Carregando...</h1>
         ) : (
           <div>
-            <button className="closeBtn" onClick={handleClose}>
-              X
-            </button>
             {categoryList && categoryList.length > 0 && (
               <form
                 onSubmit={(e) => {

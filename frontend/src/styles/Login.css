@@ -1,5 +1,6 @@
 .loginPage {
-  background-color: #D7D7D9;
+  background-image: url('../imgs/19742.jpg');
+  background-size: 1920px 1080px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,13 +9,16 @@
 }
 
 .loginInfo {
-  border-radius: 5%;
-  background-color: #65728C;
+  border-bottom-right-radius: 5%;
+  border-bottom-left-radius: 5%;
+  background-color: #191919;
   padding-bottom: 5px;
+  width: 300px;
+  height: 360px;
+  transition: .5s ease-in-out;
 }
 
 .chooseBtns {
-  border-radius: 5%;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -27,27 +31,47 @@
 }
 
 .chooseBtns .userBtn {
-  border-top-left-radius: 10px;
+  width: 150px;
+  /* border-top-left-radius: 5%; */
   background-color: transparent;
-  color: #000000;
-  transition: background-color 1s, color 1s;
+  color: #fff;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .chooseBtns .adminBtn {
-  border-top-right-radius: 10px;
+  /* border-top-right-radius: 5%; */
+  width: 150px;
   background-color: transparent;
-  color: #000000;
-  transition: background-color 1s, color 1s;
+  color: #fff;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .chooseBtns .userBtn.unselected {
+  border-top-left-radius: 5%;
+  color: #000;
   background-color: #515D73;
-  transition: background-color 1s, color 1s;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.chooseBtns .userBtn.unselected:hover {
+  border-top-left-radius: 5%;
+  background-color: #D7D7D9;
+  background-color: #191919;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .chooseBtns .adminBtn.unselected {
+  border-top-right-radius: 5%;
+  color: #000;
   background-color: #515D73;
-  transition: background-color 1s, color 1s;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.chooseBtns .adminBtn.unselected:hover {
+  border-top-right-radius: 5%;
+  color: #D7D7D9;
+  background-color: #191919;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .loginForm {
@@ -58,7 +82,70 @@
 }
 
 .submitBtn {
-  background-color: #8694A6;
-  border: none;
-  width: 30%;
+  border: 0;
+  background: none;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: #fff;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.submitBtn:hover {
+    background: #2ecc71
+}
+
+.emailInput, .passwordInput {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 10px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.passwordInput[type="password"]:focus,
+.emailInput[type="text"]:focus {
+    width: 250px;
+    border-color: #2ecc71
+}
+
+#errorMessage {
+  color: #f05837;
+}
+
+@media (min-width: 650px) {
+  .formInfo {
+    padding-top: 200px;
+  }
+
+  .loginInfo {
+    position: absolute;
+    height: 100vh;
+    top: 0px;
+    right: 0px;
+    width: 400px;
+    border-bottom-right-radius: 0%;
+    border-bottom-left-radius: 5%;
+  }
+
+  .chooseBtns .adminBtn{ 
+    width: 200px;
+  }
+
+  .chooseBtns .userBtn{ 
+    width: 200px;
+  }
 }

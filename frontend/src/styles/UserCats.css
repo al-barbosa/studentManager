@@ -1,0 +1,65 @@
+.png1 {
+  width: 50%;
+  height: 50px;
+  background-image: url('../imgs/1.png');;
+}
+
+.userCats {
+  padding-top: 100px;
+}
+
+.nCatsContainer {
+  
+  border-radius: 5%;
+  margin-left: 10px;
+  width: 140px;
+  background-color: #d7d7d9be;
+  box-shadow: #d7d7d9be;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+}
+
+.nCatsHead {
+  margin: 0px;
+}
+
+.nCatsInfo {
+  font-weight: bolder;
+  font-size: x-large;
+  margin: 0px;
+  margin-left: 20px;
+}
+
+.nCatsText {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.nCatsImg {
+  border-radius: 10%;
+  padding: 2px;
+}
+
+.catList {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 10px;
+}
+
+ul {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+ }
