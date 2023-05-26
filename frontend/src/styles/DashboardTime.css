@@ -10,7 +10,7 @@
 
 .chart-container {
   display: flex;
-  background-color: #8694a6e7;
+  background-color: #d7d7d9e3;
   border-radius: 10px;
   justify-content: space-between;
   align-items: flex-end;
@@ -19,7 +19,7 @@
   margin: 4px;
   width: 80%;
   overflow-x: auto;
-  box-shadow: 5px 5px 8px #8694A6;
+  box-shadow: 5px 5px 8px #d7d7d9e3;
 }
 
 .bar-container {
