@@ -55,7 +55,7 @@
 
 .chooseBtns .userBtn.unselected:hover {
   border-top-left-radius: 5%;
-  background-color: #D7D7D9;
+  color: #D7D7D9;
   background-color: #191919;
   transition: background-color 0.5s, color 0.5s;
 }
