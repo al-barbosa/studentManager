@@ -1,8 +1,18 @@
 .headerContainer {
+  top: 0;
   background-color: #222326;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   color: #D7D7D9;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+}
+
+.logoutContainer {
+  margin-right: 10px;
 }
 
 .headerName {
@@ -10,9 +20,41 @@
 }
 
 .logoutBtn {
-  background-color: #D7D7D9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	text-decoration: none;
   border: none;
-  color: #222326;
-  margin: 20px 15px;
-  padding: 0px 15px;
+	float: right;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  width: 50px;
+  background-color: #222326;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+.logoutBtn:hover {
+  width: 100px;
+}
+
+.logoutBtn:hover .logout{
+  opacity: .9;
+}
+
+.logoutBtn {
+  text-decoration: none;
+}
+
+.logout {
+  font-size: .8em;
+	position: relative;
+  right: -8px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s; 
 }

@@ -1,6 +1,27 @@
 .adminPage {
+  background-image: url('../imgs/19742.jpg');
+  background-size: 1920px 1080px;
   height: 100vh;
+  margin-top: 80px;
 }
+
+.buttonAdmContainer {
+  display: flex;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 270px;
+  position: fixed;
+  z-index: 1;
+}
+
+.buttonAdmContainer .admBtn {
+  color: #D7D7D9;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
 
 .selectedBtn {
   background-color: #515D73;
@@ -9,7 +30,7 @@
 }
 
 .otherBtn {
-  background-color: #65728C;
+  background-color: #65728c;
   border: none;
   color: #000000;
   padding: 10px;
@@ -21,4 +42,17 @@
 
 .reqBtn {
   border-bottom-right-radius:10px;
+}
+
+@media (min-width: 600px) {
+  .buttonAdmContainer {
+    display: absolute;
+    background-color: #222326;
+    flex-direction: column;
+    margin-left: 0; 
+    top: 80px;
+    width: 150px;
+    height: 100%;
+    position: fixed;
+  }  
 }

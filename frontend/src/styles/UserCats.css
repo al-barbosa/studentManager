@@ -159,3 +159,49 @@
     padding-top: 20px;
   }  
  }
+
+ @media (min-width: 800px){
+  .catList {
+    justify-content: center;
+    width: 80%;
+  }
+
+  .catContiner {
+    width: 220px;
+    height: 90px;
+    justify-content: center;
+  }
+
+  .progressBar {
+    width: 140px;
+    height: 20px;
+  }
+
+  .insideBar1 {
+    width: 28px
+  }
+  
+  .insideBar2 {
+    width: 56px;
+    background-color: #e07942;
+  }
+  
+  .insideBar3 {
+    width: 70px;
+    background-color: #e0cb42;
+  }
+  
+  .insideBar4 {
+    width: 98px;
+    background-color: #a1e042;
+  }
+  
+  .insideBar5 {
+    width: 126px;
+    background-color: #5ce042;
+  }
+
+  .catListName {
+    font-size: large;
+  }
+ }

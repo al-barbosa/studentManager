@@ -20,7 +20,7 @@ const DashboardTime: React.FC = () => {
 
   return (
     <div className='dashboardTime'>
-      <h3>Número de horas por aluno</h3>
+      <h3 className='dashboardTitle'>Número de horas por aluno</h3>
       <div className="chart-container">
         {users &&
           users.map((user) => (

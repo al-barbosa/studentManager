@@ -1,10 +1,11 @@
 .adminRequests {
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.reqContainer {
+.reqContainerAdmin {
   display: flex;
   gap: 20px;
   flex-direction: column;
@@ -13,6 +14,7 @@
 .reqBody {
   align-items: center;
   border-radius: 4px;
+  background-color: #8694a674;
   box-shadow: 4px 4px 10px rgb(97, 97, 97);
   display: flex;
   gap: 30px;
@@ -47,6 +49,7 @@
 }
 
 .reqsBtn button {
+  cursor: pointer;
   border: none;
   border-radius: 10px;
   height: 45px;
@@ -54,17 +57,43 @@
 }
 
 .dltBtn {
+  background-color: rgba(242, 55, 89, 0.5);
+  transition: background-color .5s;
+}
+
+.dltBtn:hover {
   background-color: #f2375a;
+  transition: background-color .5s;
 }
 
 .accBtn {
-  background-color: #6c0;
+  background-color: rgba(102, 204, 0, 0.5);
+  transition: background-color .5s;
 }
 
-@media (min-width: 700px) {
-  .reqContainer {
+.accBtn:hover {
+  background-color: #6c0;
+  transition: background-color .5s;
+}
+
+@media (min-width: 600px) {
+  .adminRequests {
+    padding-top: 0px;
+  }
+
+  .adminRequests h3 {
+    padding-top: 0px;
+    left: 0; 
+    right: 0; 
+    padding-left: 150px;
+    margin-left: auto; 
+    margin-right: auto; ;
+  }
+
+  .reqContainerAdmin {
+    margin-left: 150px;
     justify-content: center;
-    width: 700px;
+    width: auto;
     flex-direction: row;
     flex-wrap: wrap;
   }

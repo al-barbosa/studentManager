@@ -63,42 +63,45 @@ const AdminPage: React.FC = () => {
 
 
   return (
-    <div className="adminPage">
-      {adminInfo && <Header name={adminInfo.name} />}
-      <button
-        className={selectedBtn === 'Dashboard' ? 'selectedBtn dashBtn' : 'otherBtn dashBtn'}
-        onClick={handleDashboard}
-      >
-        Dashboard
-      </button>
-      <button
-        className={selectedBtn === 'User' ? 'selectedBtn userBtn' : 'otherBtn userBtn'}
-        onClick={handleUser}
-      >
-        Cadastrar usuário
-      </button>
-      <button
-        className={selectedBtn === 'Request' ? 'selectedBtn reqBtn' : 'otherBtn reqBtn'}
-        onClick={handleRequest}
-      >
-        Requisições
-      </button>
-      {selectedBtn === 'Dashboard' && (
-        <div>
-          <DashboardTime />
-          <DashboardUsers />
+    <div>{adminInfo && <Header name={adminInfo.name} />}
+      <div className="adminPage">
+        <div className="buttonAdmContainer">
+          <button
+            className={selectedBtn === 'Dashboard' ? 'selected1 admBtn' : 'unselected1 admBtn'}
+            onClick={handleDashboard}
+          >
+            Dashboard
+          </button>
+          <button
+            className={selectedBtn === 'User' ? 'selected2 admBtn' : 'unselected2 admBtn'}
+            onClick={handleUser}
+          >
+            Cadastro
+          </button>
+          <button
+            className={selectedBtn === 'Request' ? 'selected3 admBtn' : 'unselected3 admBtn'}
+            onClick={handleRequest}
+          >
+            Requisições
+          </button>
         </div>
-      )}
-      {selectedBtn === 'User' && (
-        <div>
-          <RegUser />
-        </div>
-      )}
-      {selectedBtn === 'Request' && (
-        <div>
-          <AdminRequest />
-        </div>
-      )}
+        {selectedBtn === 'Dashboard' && (
+          <div>
+            <DashboardTime />
+            <DashboardUsers />
+          </div>
+        )}
+        {selectedBtn === 'User' && (
+          <div>
+            <RegUser />
+          </div>
+        )}
+        {selectedBtn === 'Request' && (
+          <div>
+            <AdminRequest />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

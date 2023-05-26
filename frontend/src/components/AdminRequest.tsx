@@ -48,7 +48,7 @@ const AdminRequest: React.FC = () => {
   return (
     <div className="adminRequests">
       <h3>Requisições em aberto</h3>
-      <div className="reqContainer">
+      <div className="reqContainerAdmin">
         {requests &&
           requests.map((request) => (
             <div className="reqBody" key={request.id}>

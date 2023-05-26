@@ -34,7 +34,10 @@ const UserCats: React.FC<{
 
   const checkMediaSize = (): string => {
     const mediaQuery = window.matchMedia("(min-width: 450px)");
-    if (mediaQuery.matches) {
+    const mediaQueryBig = window.matchMedia("(min-width: 800px)");
+    if (mediaQueryBig.matches) {
+      return '70';
+    } else if (mediaQuery.matches) {
       return '60';
     } else {
       return '40';

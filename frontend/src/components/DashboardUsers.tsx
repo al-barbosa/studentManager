@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react';
 import UserAPI from '../utils/userAPI';
 import IUserWithTime from '../interfaces/userWithTimeInterface';
 import convertDateFormat from '../utils/dateFormat';
-import '../styles/DashboardUsers.css'
+import png1 from '../imgs/1.png';
+import png2 from '../imgs/2.png';
+import png3 from '../imgs/3.png';
+import png4 from '../imgs/4.png';
+import png5 from '../imgs/5.png';
+import '../styles/DashboardUsers.css';
 
 const DashboardUsers: React.FC = () => {
   const [users, setUsers] = useState<IUserWithTime[] | null>(null);
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
   useEffect(() => {
     const userAPI = new UserAPI();
 
-    /**
-     * Função assíncrona para buscar os usuários e atualizar o estado 'users'.
-     */
     const getUsers = async (): Promise<void> => {
       const allUsers = await userAPI.getAll();
       setUsers(allUsers);
@@ -21,38 +24,71 @@ const DashboardUsers: React.FC = () => {
     getUsers();
   }, []);
 
+  const handleUserNameClick = (userId: number): void => {
+    if (selectedRow === userId) {
+      setSelectedRow(null);
+    } else {
+      setSelectedRow(userId);
+    }
+  };
+
+  const checkMediaSize = (): string => {
+    const mediaQuery = window.matchMedia("(min-width: 450px)");
+    if (mediaQuery.matches) {
+      return '30';
+    } else {
+      return '20';
+    }
+  };
+
+  const imageMapping: { [key: number]: string } = {
+    1: png1,
+    2: png2,
+    3: png3,
+    4: png4,
+    5: png5,
+  };
+
   return (
     <div className="dashboardUsers">
       <h3>Informação sobre alunos</h3>
       <div className="tableContainer">
-        <table className="userTable">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Atividades</th>
-              <th className="updatedAtHead">Último login</th>
-              <th className="createdAtHead">Criado em</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users &&
-              users.map((user) => (
-                <tr key={user.id}>
-                  <td className="userName">{user.name}</td>
-                  <td className="catName">
-                    {user.category &&
-                      user.category.map((category, index) => (
-                        <p key={index}>{category.name}</p>
-                      ))}
-                  </td>
-                  <td className="updatedAt">
-                    {user.updatedAt === user.createdAt ? '-' : convertDateFormat(user.updatedAt)}
-                  </td>
-                  <td className="createdAt">{convertDateFormat(user.createdAt)}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        <div className="usersTable">
+          {users &&
+            users.map((user) => (
+              <div key={user.id}>
+                <div
+                  className={`userName ${selectedRow === user.id ? 'selected' : ''}`}
+                  onClick={() => handleUserNameClick(user.id)}
+                >
+                  {user.name}
+                </div>
+                <div className={`${selectedRow === user.id ? 'selectedUser' : 'unselectedUser'}`}>
+                  <div className="userInfoCont">
+                    <div className="catName">
+                      {user.category &&
+                        user.category.map((category, index) => (
+                          <div className="singleCat">
+                            <img src={imageMapping[category.id]} alt="Imagem da categoria" width={checkMediaSize()} height={checkMediaSize()}></img>
+                            <p key={index}>{category.name}</p>
+                          </div>
+                        ))}
+                    </div>
+                    <div className="userDates">
+                      <div className="updatedAt">
+                        <p>Último login</p>
+                        {user.updatedAt === user.createdAt ? '-' : convertDateFormat(user.updatedAt)}
+                      </div>
+                      <div className="createdAt">
+                        <p>Criado em</p>
+                        <div>{convertDateFormat(user.createdAt)}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
