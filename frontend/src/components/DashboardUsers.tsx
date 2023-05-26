@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import UserAPI from '../utils/userAPI';
 import IUserWithTime from '../interfaces/userWithTimeInterface';
 import convertDateFormat from '../utils/dateFormat';
-import png1 from '../imgs/1.png';
-import png2 from '../imgs/2.png';
-import png3 from '../imgs/3.png';
-import png4 from '../imgs/4.png';
-import png5 from '../imgs/5.png';
+import imageMapping from '../utils/imageMapping';
+import checkMediaSize from '../utils/checkMediaSize';
 import '../styles/DashboardUsers.css';
 
 const DashboardUsers: React.FC = () => {
@@ -30,23 +27,6 @@ const DashboardUsers: React.FC = () => {
     } else {
       setSelectedRow(userId);
     }
-  };
-
-  const checkMediaSize = (): string => {
-    const mediaQuery = window.matchMedia("(min-width: 450px)");
-    if (mediaQuery.matches) {
-      return '30';
-    } else {
-      return '20';
-    }
-  };
-
-  const imageMapping: { [key: number]: string } = {
-    1: png1,
-    2: png2,
-    3: png3,
-    4: png4,
-    5: png5,
   };
 
   return (

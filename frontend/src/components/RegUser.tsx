@@ -73,7 +73,7 @@ const RegUser: React.FC = () => {
   };
 
   return (
-    <div className='regUser'>
+    <div className="regUser">
       {createdUser ? (
         <div>
           <h3>Cadastrar novo aluno</h3>

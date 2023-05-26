@@ -16,10 +16,10 @@ const Header: React.FC<{ name: string }> = ({ name }) => {
   };  
 
   return (
-    <div className='headerContainer'>
-      <h1 className='headerName'>{getFirstName(name)}</h1>
+    <div className="headerContainer">
+      <h1 className="headerName">{getFirstName(name)}</h1>
       <div className="logoutContainer">
-        <button className='logoutBtn' onClick={handleLogout}>
+        <button className="logoutBtn" onClick={handleLogout}>
           <img src={logout} alt="Imagem da categoria" width="30" height="30"></img>
           <div className="logout">Logout</div>
         </button>

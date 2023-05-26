@@ -5,43 +5,24 @@ import getYear from '../utils/getYear';
 import sigma from '../imgs/sigma.png';
 import hourglass from '../imgs/hourglass.png';
 import clock from '../imgs/clock.png';
-import png1 from '../imgs/1.png';
-import png2 from '../imgs/2.png';
-import png3 from '../imgs/3.png';
-import png4 from '../imgs/4.png';
-import png5 from '../imgs/5.png';
+import imageMapping from '../utils/imageMapping';
+import checkMediaSize from '../utils/checkMediaSize';
 import '../styles/UserCats.css';
 
 const UserCats: React.FC<{
   category: ICategory[];
   userInfo: IUserWithTime;
 }> = ({ category, userInfo }) => {
-  const imageMapping: { [key: number]: string } = {
-    1: png1,
-    2: png2,
-    3: png3,
-    4: png4,
-    5: png5,
-  };
-
+  /**
+   * Mapeamento das barras baseado no ID da categoria.
+   */
+  // 
   const barMapping: { [key: number]: string } = {
     1: "insideBar1",
     2: "insideBar2",
     3: "insideBar3",
     4: "insideBar4",
     5: "insideBar5",
-  };
-
-  const checkMediaSize = (): string => {
-    const mediaQuery = window.matchMedia("(min-width: 450px)");
-    const mediaQueryBig = window.matchMedia("(min-width: 800px)");
-    if (mediaQueryBig.matches) {
-      return '70';
-    } else if (mediaQuery.matches) {
-      return '60';
-    } else {
-      return '40';
-    }
   };
 
   return (
